@@ -56,7 +56,6 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'authtools',
     'crispy_forms',
-    'easy_thumbnails',
     'accounts',
     'polls',
 )
