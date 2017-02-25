@@ -26,6 +26,7 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+from django.core.urlresolvers import reverse_lazy
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -58,6 +59,7 @@ INSTALLED_APPS = (
     'crispy_forms',
     'accounts',
     'polls',
+    'profiles',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -155,5 +157,5 @@ STATIC_URL = '/static/'
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
 AUTH_USER_MODEL = 'authtools.User'
-# LOGIN_REDIRECT_URL = reverse_lazy("profiles:show_self")
-# LOGIN_URL = reverse_lazy("accounts:login")
+LOGIN_REDIRECT_URL = reverse_lazy("profiles:show_self")
+LOGIN_URL = reverse_lazy("accounts:login")

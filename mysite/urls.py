@@ -16,12 +16,14 @@ from django.conf.urls import include, url
 from django.contrib import admin
 
 from .views import HomePage, AboutPage
-import accounts.urls
+from accounts import urls as accounts_urls
+from profiles import urls as profiles_urls
 
 urlpatterns = [
     url(r'^$', HomePage.as_view(), name='home'),
     url(r'^about/$', AboutPage.as_view(), name='about'),
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^', include(accounts.urls, namespace='accounts')),
+    url(r'^users/', include(profiles_urls, namespace='profiles')),
+    url(r'^', include(accounts_urls, namespace='accounts')),
 
 ]
