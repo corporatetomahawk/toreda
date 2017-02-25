@@ -8,6 +8,9 @@ handlers:
   static_dir: static/
 - url: .*
   script: mysite.wsgi.application
+- url: /favicon\.ico
+  static_files: static/site/ico/favicon.ico
+  upload: static/site/ico/favicon\.ico
 
 # Only pure Python libraries can be vendored
 # Python libraries that use C extensions can

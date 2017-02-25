@@ -54,6 +54,10 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'authtools',
+    'crispy_forms',
+    'easy_thumbnails',
+    'accounts',
     'polls',
 )
 
@@ -73,7 +77,9 @@ ROOT_URLCONF = 'mysite.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            os.path.join(BASE_DIR, 'templates'),
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -99,7 +105,7 @@ if os.getenv('SERVER_SOFTWARE', '').startswith('Google App Engine'):
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.mysql',
-            'HOST': '/cloudsql/triple-cab-159421:us-central1:polls-instance',
+            'HOST': '/cloudsql/atai-toreda:us-central1:polls-instance',
             'NAME': 'polls',
             'USER': 'Tom',
             'PASSWORD': 'tom',
@@ -141,5 +147,14 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
-STATIC_ROOT = 'static'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),
+]
+
 STATIC_URL = '/static/'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap3'
+
+AUTH_USER_MODEL = 'authtools.User'
+# LOGIN_REDIRECT_URL = reverse_lazy("profiles:show_self")
+# LOGIN_URL = reverse_lazy("accounts:login")

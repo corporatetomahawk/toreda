@@ -15,9 +15,13 @@
 from django.conf.urls import include, url
 from django.contrib import admin
 
-from polls.views import index
+from .views import HomePage, AboutPage
+import accounts.urls
 
 urlpatterns = [
-    url(r'^$', index),
+    url(r'^$', HomePage.as_view(), name='home'),
+    url(r'^about/$', AboutPage.as_view(), name='about'),
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^', include(accounts.urls, namespace='accounts')),
+
 ]
